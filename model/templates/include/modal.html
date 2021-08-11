@@ -1,0 +1,60 @@
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>-->
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>-->
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>-->
+<style>
+    .modal-content{
+        background-color: #212121
+    }
+</style>
+<div class="modal fade" id="exampleModal-{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Transaction</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+            {{ transferForm.hidden_tag() }}
+          <div class="form-group">
+              {{ transferForm.account.label() }}
+              {{ transferForm.account(class="form-control", value=item.account_no) }}
+          </div>
+            <div class="form-group">
+              {{ transferForm.bankname.label() }}
+              {{ transferForm.bankname(class="form-control", value=item.bankname) }}
+            </div>
+            <div class="form-group">
+              {{ transferForm.amount.label() }}
+              {{ transferForm.amount(class="form-control", placeholder="Enter Amount") }}
+            </div>
+            <br>
+            <div class="form-group">
+              {{ transferForm.submit(class="btn btn-primary" ) }}
+            </div>
+
+<!--            <label for="recipient-name" class="col-form-label">Account no: </label>-->
+<!--            <input type="text" disabled class="form-control" name="account" placeholder="{{ item.account_no }}" id="recipient-name">-->
+
+<!--            <div class="form-group">-->
+<!--            <label for="name" class="col-form-label">Bank name: </label>-->
+<!--            <input type="text" disabled class="form-control" name="bank" placeholder="{{ item.bankname }}" id="name">-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="amount" class="col-form-label">Amount: </label>-->
+<!--            <input type="text" class="form-control" name="transfer" id="amount">-->
+<!--          </div>-->
+<!--          <input type="submit" class="btn btn-primary" name="submit" aria-valuetext="Proceed">-->
+        </form>
+
+      </div>
+      <div class="modal-footer">
+<!--        <button type="button" class="btn btn-primary">Proceed</button>-->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>

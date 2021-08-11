@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}
+Customers
+{% endblock %}
+{% block content %}
+
+<div class="row" style="margin-top:20px; margin-left:20px; margin-right:20px">
+       <h2>Customer List</h2>
+      <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <!-- Your Columns HERE -->
+<!--               <th scope="col">ID</th>-->
+                <th scope="col">Account No</th>
+               <th scope="col">Name</th>
+               <th scope="col">Email</th>
+               <th scope="col">Bank Name</th>
+
+<!--               <th scope="col">Pin</th>-->
+<!--               <th scope="col">Current Balance</th>-->
+               <th scope="col">Options</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+            <tr>
+               <td>{{ item.account_no }}</td>
+               <td>{{ item.name }}</td>
+               <td>{{ item.email}}</td>
+<!--               <td>{{ item.account_no }}</td>-->
+               <td>{{ item.bankname }}</td>
+<!--               <td>₹{{ item.current_balance }}</td>-->
+               <td>
+                  <form method="post">
+                     {{ log.hidden_tag() }}
+                  {{ log.account(hidden=true, value=item.account_no) }}
+                     {{ log.submit(class="btn btn-outline btn-success") }}
+                  </form>
+<!--                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#exampleModalCenter-{{ item.id }}">Check Info</button>-->
+                  <!--                    <br><br>-->
+<!--                                      <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#exampleModal-{{ item.id }}">Transfer</button>-->
+
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+</div>
+{% endblock %}

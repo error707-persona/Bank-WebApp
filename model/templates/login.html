@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+<!--<h1>Register Form</h1>-->
+<body>
+<div class="container">
+    <center><img class="mb-4" src="logo.png" alt="">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Sign in
+            </h1></center>
+<form method="POST" class="form-signin" style="color:white">
+    {{ form.hidden_tag() }}
+
+    {{ form.email.label() }}
+    {{ form.email(class="form-control", placeholder="Email") }}
+
+    {{ form.password1.label() }}
+    {{ form.password1(class="form-control", placeholder="Password") }}
+    <br>
+    <center>
+    <div class="checkboox mb-3">
+        <h6>Do not have an account? </h6>
+        <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">Register here</a>
+    </div>
+        </center>
+    <br>
+    {{ form.submit(class="btn btn-lg btn-block btn-primary", placeholder="Confirm Password") }}
+</form>
+    </div>
+</body>
+{% endblock %}
