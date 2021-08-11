@@ -39,14 +39,16 @@ def customers():
                         update.current_balance = update.current_balance + int(transferForm.amount.data)
                         cut.current_balance = cut.current_balance - int(transferForm.amount.data)
                         session['current_balance'] = cut.current_balance
-                        record = Transaction(fromm='current user', to=transferForm.account.data, amount=transferForm.amount.data)
+                        record = Transaction(fromm=session['account_no'], to=transferForm.account.data, amount=transferForm.amount.data)
                         db.session.add(record)
                         db.session.commit()
                         flash('Congratulations the transaction was a success!', category='success')
         else:
             flash('Please login first to carry out transactions', category='info')
     items = User_this.query.all()
-    return render_template('customer.html',  items=items, transferForm=transferForm)
+    transaction = Transaction.query.filter_by(fromm=session['account_no']).all()
+    transac = Transaction.query.filter_by(to=session['account_no']).all()
+    return render_template('customer.html',  items=items, transferForm=transferForm, transaction=transaction, transac=transac)
 
 @app.route('/login_page', methods=['GET', 'POST'])
 def login_page():
