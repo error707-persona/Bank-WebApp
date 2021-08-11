@@ -46,8 +46,12 @@ def customers():
         else:
             flash('Please login first to carry out transactions', category='info')
     items = User_this.query.all()
-    transaction = Transaction.query.filter_by(fromm=session['account_no']).all()
-    transac = Transaction.query.filter_by(to=session['account_no']).all()
+    if session.get('logged_in') == True:
+        transaction = Transaction.query.filter_by(fromm=session['account_no']).all()
+        transac = Transaction.query.filter_by(to=session['account_no']).all()
+    else:
+        transaction = Transaction.query.filter_by(fromm='1').all()
+        transac = Transaction.query.filter_by(to='1').all()
     return render_template('customer.html',  items=items, transferForm=transferForm, transaction=transaction, transac=transac)
 
 @app.route('/login_page', methods=['GET', 'POST'])
