@@ -35,10 +35,10 @@ Customers
                <td>{{ item.bankname }}</td>
 <!--               <td>₹{{ item.current_balance }}</td>-->
                <td>
-                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#exampleModalCenter-{{ item.id }}">Check Info</button>
+                  <button class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter-{{ item.id }}">Check Info</button>
                   <!--                    <br><br>-->
 
-                  <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#exampleModal-{{ item.id }}">Transfer</button>
+                  <button class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal-{{ item.id }}">Transfer</button>
 
                </td>
             </tr>
@@ -47,20 +47,22 @@ Customers
       </table>
    </div>
    <div class="col-4">Your Recent Transactions
-   <div class="row">
-      {% for rec in transaction %}
-      <div class="col-md-6">
-         <div style="margin-bottom: 5px" class="card text-center bg-dark">
-     <div class="card-body">
-         <h5 class="card-title">Card Title</h5>
-         <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px"
-                 data-toggle="modal" data-target="#YourDataTarget">
-             Sell this Item
-         </button>
-         <p class="card-text"><strong>Additional Text</strong></p>
-     </div>
- </div>
-      </div>
+      <div class="row">
+
+         {% for rec in transaction %}
+         <div class="col-md-6">
+            <div style="margin-bottom: 5px" class="card text-center bg-dark">
+               <div class="card-body">
+                  From: {{ session['name'] }}<br>
+                  <hr>
+                  To: {{ rec.to }}<br>
+                  <hr>
+                  Amount: {{ rec.amount }}<br>
+                  <hr>
+                  Date: {{  rec.date }}
+               </div>
+            </div>
+         </div>
       {% endfor %}
    </div>
    </div>
